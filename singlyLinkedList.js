@@ -12,6 +12,21 @@ class SinglyLinkedList {
 
     tmpNode.next = node;
   }
+
+  getNode(index) {
+    let tmpIndex = 0;
+    let node = this.head;
+    while (tmpIndex !== index && node.next !== null) {
+      node = node.next;
+      tmpIndex += 1;
+    }
+
+    if (index === tmpIndex) {
+      return node;
+    }
+
+    return null;
+  }
 }
 
 class Node {
