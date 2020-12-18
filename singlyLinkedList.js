@@ -1,16 +1,12 @@
 class SinglyLinkedList {
   constructor(head) {
     this.head = head;
+    this.tail = this.head;
   }
 
   add(node) {
-    let tmpNode = this.head;
-
-    while (tmpNode.next !== null) {
-      tmpNode = tmpNode.next;
-    }
-
-    tmpNode.next = node;
+    this.tail.next = node;
+    this.tail = node;
   }
 
   addByIndex(node, index) {
