@@ -36,6 +36,10 @@ class SinglyLinkedList {
   }
 
   remove() {
+    if (!this.head) {
+      return;
+    }
+
     let prevTail = this.head;
     while (prevTail.next !== this.tail) {
       prevTail = prevTail.next;
@@ -86,3 +90,4 @@ class Node {
     this.next = null;
   }
 }
+
