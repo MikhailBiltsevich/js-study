@@ -29,7 +29,18 @@ class DoublyLinkedList {
   }
 
   getNode(index) {
+    let tmpIndex = 0;
+    let node = this.head;
+    while (tmpIndex !== index && node.next !== null) {
+      node = node.next;
+      tmpIndex += 1;
+    }
 
+    if (index === tmpIndex) {
+      return node;
+    }
+
+    return null;
   }
 }
 
@@ -40,3 +51,6 @@ class Node {
     this.prev = null;
   }
 }
+const list = new DoublyLinkedList(5, 3, 1);
+console.log(list.getNode(2));
+console.log(list.tail);
