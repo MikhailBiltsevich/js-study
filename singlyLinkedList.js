@@ -52,7 +52,7 @@ class SinglyLinkedList {
   removeByIndex(index) {
     const removedNode = this.getNode(index);
     if (!removedNode) {
-      console.log('Out of range list. Try to use another index or add node in the end of list');
+      console.log('Out of range list. Try to use another index');
       return;
     }
 
