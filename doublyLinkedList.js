@@ -58,7 +58,31 @@ class DoublyLinkedList {
   }
 
   removeByIndex(index) {
+    const nodeByIndex = this.getNode(index);
+    if (!nodeByIndex) {
+      console.log('Index out of range');
+      return;
+    }
 
+    switch (nodeByIndex) {
+      case this.head:
+        if (this.head === this.tail) {
+          this.head = null;
+          this.tail = null;
+        } else {
+          this.head = nodeByIndex.next;
+          this.head.prev = null;
+        }
+        break;
+      case this.tail:
+        this.tail = nodeByIndex.prev;
+        this.tail.next = null;
+        break;
+      default:
+        nodeByIndex.prev.next = nodeByIndex.next;
+        nodeByIndex.next.prev = nodeByIndex.prev;
+        break;
+    }
   }
 
   getNode(index) {
