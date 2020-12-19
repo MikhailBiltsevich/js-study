@@ -40,13 +40,18 @@ class SinglyLinkedList {
       return;
     }
 
-    let prevTail = this.head;
-    while (prevTail.next !== this.tail) {
-      prevTail = prevTail.next;
+    if (this.head === this.tail) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      let prevTail = this.head;
+      while (prevTail.next !== this.tail) {
+        prevTail = prevTail.next;
+      }
+  
+      this.tail = prevTail;
+      prevTail.next = null;
     }
-
-    this.tail = prevTail;
-    prevTail.next = null;
   }
 
   removeByIndex(index) {
@@ -56,15 +61,23 @@ class SinglyLinkedList {
       return;
     }
 
-    if(this.head === removedNode) {
-      this.head = removedNode.next;
-    } else {
-      const prevNode = this.getNode(index - 1);
-      prevNode.next = removedNode.next;
-
-      if (removedNode === this.tail) {
-        this.tail = prevNode;
-      }
+    switch (removedNode) {
+      case this.head:
+        if (this.head === this.tail) {
+          this.head = null;
+          this.tail = null;
+        } else {
+          this.head = removedNode.next;
+        }
+        break;
+      default:
+        const prevNode = this.getNode(index - 1);
+        prevNode.next = removedNode.next;
+    
+        if (removedNode === this.tail) {
+          this.tail = prevNode;
+        }
+        break;
     }
   }
 
@@ -90,4 +103,3 @@ class Node {
     this.next = null;
   }
 }
-
