@@ -1,12 +1,17 @@
 class SinglyLinkedList {
-  constructor(head) {
-    this.head = head;
-    this.tail = this.head;
+  constructor(...values) {
+    for (let i = 0; i < values.length; i += 1) {
+      this.add(values[i]);
+    }
   }
 
   add(value) {
     const node = new Node(value);
-    this.tail.next = node;
+    if (!this.head) {
+      this.head = node;
+    } else {
+      this.tail.next = node;
+    }
     this.tail = node;
   }
 
