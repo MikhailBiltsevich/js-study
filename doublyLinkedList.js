@@ -1,6 +1,8 @@
 class DoublyLinkedList {
   constructor(...values) {
-
+    for (let i = 0; i < values.length; i += 1) {
+      this.add(values[i]);
+    }
   }
 
   add(value) {
