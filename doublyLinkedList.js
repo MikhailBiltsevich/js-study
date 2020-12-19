@@ -17,7 +17,28 @@ class DoublyLinkedList {
   }
 
   addByIndex(value, index) {
+    const nodeByIndex = this.getNode(index);
+    if (!nodeByIndex) {
+      console.log('Index out of range');
+      return;
+    }
 
+    const node = new Node(value);
+    const prevNode = nodeByIndex.prev;
+
+    switch (nodeByIndex) {
+      case this.head:
+        this.head = node;
+        node.next = nodeByIndex;
+        break;
+      default:
+        node.prev = prevNode;
+        prevNode.next = node;
+        node.next = nodeByIndex;
+        break;
+    }
+    
+    nodeByIndex.prev = node;
   }
 
   remove() {
@@ -51,6 +72,3 @@ class Node {
     this.prev = null;
   }
 }
-const list = new DoublyLinkedList(5, 3, 1);
-console.log(list.getNode(2));
-console.log(list.tail);
