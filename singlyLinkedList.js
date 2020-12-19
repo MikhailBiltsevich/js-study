@@ -28,6 +28,16 @@ class SinglyLinkedList {
     }
   }
 
+  remove() {
+    let prevTail = this.head;
+    while (prevTail.next !== this.tail) {
+      prevTail = prevTail.next;
+    }
+
+    this.tail = prevTail;
+    prevTail.next = null;
+  }
+
   getNode(index) {
     let tmpIndex = 0;
     let node = this.head;
