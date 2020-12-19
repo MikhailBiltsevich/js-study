@@ -4,18 +4,20 @@ class SinglyLinkedList {
     this.tail = this.head;
   }
 
-  add(node) {
+  add(value) {
+    const node = new Node(value);
     this.tail.next = node;
     this.tail = node;
   }
 
-  addByIndex(node, index) {
+  addByIndex(value, index) {
     const findedNode = this.getNode(index);
     if (!findedNode) {
       console.log('Out of range list. Try to use another index or add node in the end of list');
       return;
     }
-
+    
+    const node = new Node(value);
     const isHead = findedNode === this.head;
     
     if (isHead) {
