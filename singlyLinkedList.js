@@ -18,7 +18,11 @@ class SinglyLinkedList {
   addByIndex(value, index) {
     const findedNode = this.getNode(index);
     if (!findedNode) {
-      console.log('Out of range list. Try to use another index or add node in the end of list');
+      if (index === 0) {
+        this.add(value);
+      } else {
+        console.log('Out of range list. Try to use another index or add node in the end of list');
+      }
       return;
     }
     
@@ -84,7 +88,7 @@ class SinglyLinkedList {
   getNode(index) {
     let tmpIndex = 0;
     let node = this.head;
-    while (tmpIndex !== index && node.next !== null) {
+    while (tmpIndex !== index && node) {
       node = node.next;
       tmpIndex += 1;
     }

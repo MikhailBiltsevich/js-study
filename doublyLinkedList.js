@@ -19,7 +19,11 @@ class DoublyLinkedList {
   addByIndex(value, index) {
     const nodeByIndex = this.getNode(index);
     if (!nodeByIndex) {
-      console.log('Index out of range');
+      if (index === 0) {
+        this.add(value);
+      } else {
+        console.log('Index out of range');
+      }
       return;
     }
 
@@ -88,7 +92,7 @@ class DoublyLinkedList {
   getNode(index) {
     let tmpIndex = 0;
     let node = this.head;
-    while (tmpIndex !== index && node.next !== null) {
+    while (node && tmpIndex !== index) {
       node = node.next;
       tmpIndex += 1;
     }
