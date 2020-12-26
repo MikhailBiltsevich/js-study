@@ -103,6 +103,70 @@ class DoublyLinkedList {
 
     return null;
   }
+  
+  sort(isAscending = true) {
+    let tmpTail = this.tail;
+
+    const findMax = () => {
+      let maxNode = this.head;
+      let node = this.head;
+      while (node && node !== tmpTail.next) {
+        if (node.value > maxNode.value) {
+          maxNode = node;
+        }
+        node = node.next;
+      }
+
+      return maxNode;
+    }
+
+    const findMin = () => {
+      let minNode = this.head;
+      let node = this.head;
+      while (node && node !== tmpTail.next) {
+        if (node.value < minNode.value) {
+          minNode = node;
+        }
+        node = node.next;
+      }
+
+      return minNode;
+    }
+
+    const findNode = isAscending ? findMin : findMax;
+
+    let isSorted = tmpTail === this.head;
+    while (!isSorted) {
+      let node = findNode();
+      switch (node) {
+        case this.head:
+          isSorted = tmpTail === this.head
+
+          this.head = this.head.next;
+          this.head.prev = null;
+          break;
+        case tmpTail:
+          tmpTail = tmpTail.prev;
+          if (node === this.tail) {
+            continue;
+          }
+          tmpTail.next = node.next;
+          break;
+        default:
+          const prevNode = node.prev;
+          const nextNode = node.next;
+
+          prevNode.next = nextNode;
+          nextNode.prev = prevNode;
+          break;
+        }
+
+        this.tail.next = node;
+        node.prev = this.tail;
+        node.next = null;
+        this.tail = node;
+    }
+  }
 }
 
 class Node {
