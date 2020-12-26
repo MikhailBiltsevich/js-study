@@ -167,6 +167,23 @@ class DoublyLinkedList {
         this.tail = node;
     }
   }
+
+  getStringRepresentstion() {
+    let node = this.head;
+    let fromHeadToTailStr = '';
+    while (node) {
+      fromHeadToTailStr += `${node.value} \u1433 `;
+      node = node.next;
+    }
+
+    node = this.tail;
+    let fromTailToHeadStr = '';
+    while (node) {
+      fromTailToHeadStr = ` \u1438 ${node.value}` + fromTailToHeadStr ;
+      node = node.prev;
+    }
+    return { fromHeadToTailStr, fromTailToHeadStr };
+  }
 }
 
 class Node {
