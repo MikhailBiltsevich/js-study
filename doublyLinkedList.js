@@ -168,6 +168,52 @@ class DoublyLinkedList {
     }
   }
 
+  sortByAsc() {
+    const insert = (node) => {
+      if (!this.head) {
+        this.head = node;
+        this.tail = node;
+        return;
+      }
+
+      if (node.value < this.head.value) {
+        node.next = this.head;
+        node.next.prev = node;
+        this.head = node;
+      } else if (node.value > this.tail.value) {
+        node.prev = this.tail;
+        node.prev.next = node;
+        this.tail = node;
+      } else {
+        let tmpNode = this.head;
+        while (node.value > tmpNode.value) {
+          tmpNode = tmpNode.next
+        }
+        node.next = tmpNode;
+        node.prev = tmpNode.prev;
+        node.prev.next = node;
+        node.next.prev = node;
+      }
+    }
+
+    let tmpHead = this.head;
+
+    this.head = null;
+    this.tail = null;
+    
+    while (tmpHead) {
+      const node = tmpHead;
+      tmpHead = tmpHead.next;
+      if (tmpHead) {
+        tmpHead.prev = null;
+      }
+      node.next = null;
+      node.prev = null;
+      
+      insert(node);
+    }
+  }
+
   getStringRepresentstion() {
     let node = this.head;
     let fromHeadToTailStr = '';
