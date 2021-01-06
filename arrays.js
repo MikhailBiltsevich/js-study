@@ -1,5 +1,5 @@
 function copyArr(arr) {
-
+  return arr.map((value) => value);
 }
 
 function arrayJoin(arr) {
