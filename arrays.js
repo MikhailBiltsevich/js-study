@@ -3,7 +3,7 @@ function copyArr(arr) {
 }
 
 function arrayJoin(arr) {
-
+  return arr.join();
 }
 
 
