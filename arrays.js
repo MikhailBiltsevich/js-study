@@ -6,7 +6,6 @@ function arrayJoin(arr) {
   return arr.join();
 }
 
-
 function colonOdd(num) {
   if (typeof num !== 'number') {
     return undefined;
@@ -52,5 +51,15 @@ function removeDuplicates(arr) {
 }
 
 function countIdentic(arr) {
+  let amount = 0;
+  for (let i = 0; i < arr.length; i += 1) {
+    const currentItem = arr[i];
 
+    const tmpAmount = arr.filter((item, index) => index > i && item === currentItem).length;
+    if (tmpAmount > 0) {
+      amount += tmpAmount;
+      arr = arr.filter((item, index) => index <= i || item !== currentItem);
+    }
+  }
+  return amount;
 }
