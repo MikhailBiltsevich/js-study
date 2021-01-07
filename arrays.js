@@ -28,7 +28,27 @@ function colonOdd(num) {
 }
 
 function removeDuplicates(arr) {
+  for (let i = 0; i < arr.length; i += 1) {
+    const currentItem = arr[i];
+    const hasDuplicates = arr.slice(i + 1).some(isDuplicate);
 
+    function isDuplicate(item) {
+      let isEqual = false;
+      if (typeof item === typeof currentItem) {
+        isEqual = typeof currentItem === 'string'
+          ? currentItem.toUpperCase() === item.toUpperCase()
+          : currentItem === item;
+      }
+
+      return isEqual;
+    }
+
+    if (hasDuplicates) {
+      arr = arr.filter((item, index) => index <= i || !isDuplicate(item));
+    }
+  }
+
+  return arr;
 }
 
 function countIdentic(arr) {
