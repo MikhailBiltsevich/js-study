@@ -1,9 +1,19 @@
 function copyArr(arr) {
-  return arr.map((value) => value);
+  const newArr = new Array(arr.length);
+  for (let i = 0; i < arr.length; i++) {
+    newArr[i] = arr[i];
+  }
+
+  return newArr;
 }
 
 function arrayJoin(arr) {
-  return arr.join();
+  let str = '';
+  for (let i = 0; i < arr.length; i++) {
+    str += i + 1 == arr.length ? arr[i] : `${arr[i]},`;
+  }
+
+  return str;
 }
 
 function colonOdd(num) {
