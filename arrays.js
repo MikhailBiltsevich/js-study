@@ -1,4 +1,4 @@
-function copyArr(arr) {
+const copyArr = (arr) => {
   const newArr = new Array(arr.length);
   for (let i = 0; i < arr.length; i++) {
     newArr[i] = arr[i];
@@ -7,7 +7,7 @@ function copyArr(arr) {
   return newArr;
 }
 
-function arrayJoin(arr) {
+const arrayJoin = (arr) => {
   let str = '';
   for (let i = 0; i < arr.length; i++) {
     str += i + 1 == arr.length ? arr[i] : `${arr[i]},`;
@@ -16,7 +16,7 @@ function arrayJoin(arr) {
   return str;
 }
 
-function colonOdd(num) {
+const colonOdd = (num) => {
   if (typeof num !== 'number') {
     return undefined;
   }
@@ -36,12 +36,9 @@ function colonOdd(num) {
   return arr.join('');
 }
 
-function removeDuplicates(arr) {
-  for (let i = 0; i < arr.length; i += 1) {
-    const currentItem = arr[i];
-    const hasDuplicates = arr.slice(i + 1).some(isDuplicate);
-
-    function isDuplicate(item) {
+const removeDuplicates = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    const isDuplicate = (item) => {
       let isEqual = false;
       if (typeof item == typeof currentItem) {
         isEqual = typeof currentItem == 'string'
@@ -52,6 +49,9 @@ function removeDuplicates(arr) {
       return isEqual;
     }
 
+    const currentItem = arr[i];  
+    const hasDuplicates = arr.slice(i + 1).some(isDuplicate);
+
     if (hasDuplicates) {
       arr = arr.filter((item, index) => index <= i || !isDuplicate(item));
     }
@@ -60,7 +60,7 @@ function removeDuplicates(arr) {
   return arr;
 }
 
-function countIdentic(arr) {
+const countIdentic = (arr) => {
   let amount = 0;
   for (let i = 0; i < arr.length; i++) {
     const currentItem = arr[i];
