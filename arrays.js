@@ -62,12 +62,12 @@ function removeDuplicates(arr) {
 
 function countIdentic(arr) {
   let amount = 0;
-  for (let i = 0; i < arr.length; i += 1) {
+  for (let i = 0; i < arr.length; i++) {
     const currentItem = arr[i];
 
     const tmpAmount = arr.filter((item, index) => index > i && item === currentItem).length;
-    if (tmpAmount > 0) {
-      amount += tmpAmount;
+    if (tmpAmount !== 0) {
+      amount++;
       arr = arr.filter((item, index) => index <= i || item !== currentItem);
     }
   }
