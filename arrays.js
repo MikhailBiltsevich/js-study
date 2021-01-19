@@ -23,13 +23,13 @@ function colonOdd(num) {
 
   const arr = num.toString().split('');
 
-  for(let i = 1; i < arr.length; i += 1) {
+  for(let i = 0; i < arr.length - 1; i++) {
      const num = Number.parseInt(arr[i]);
-     const prevNum = Number.parseInt(arr[i - 1]);
+     const nextNum = Number.parseInt(arr[i + 1]);
 
-     if ((num * prevNum) % 2 !== 0) {
-       arr.splice(i, 0, ':');
-       i += 1;
+     if ((num * nextNum) % 2 !== 0) {
+       arr.splice(i + 1, 0, ':');
+       i++;
      }
   }
 
