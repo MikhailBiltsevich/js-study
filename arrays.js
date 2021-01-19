@@ -43,9 +43,9 @@ function removeDuplicates(arr) {
 
     function isDuplicate(item) {
       let isEqual = false;
-      if (typeof item === typeof currentItem) {
-        isEqual = typeof currentItem === 'string'
-          ? currentItem.toUpperCase() === item.toUpperCase()
+      if (typeof item == typeof currentItem) {
+        isEqual = typeof currentItem == 'string'
+          ? currentItem.toUpperCase() == item.toUpperCase()
           : currentItem === item;
       }
 
