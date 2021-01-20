@@ -7,11 +7,11 @@ const writeNumbers = (n) => {
 }
 
 const writeDigits = (n) => {
-  if (n > 0) {
+  if (n % 10 != n) {
     writeDigits(Math.trunc(n / 10))
-    console.log(n % 10);
   }
-
+  
+  console.log(n % 10);
 }
 
 const getSum = (n) => {
