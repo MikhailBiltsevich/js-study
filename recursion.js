@@ -7,6 +7,10 @@ const writeNumbers = (n) => {
 }
 
 const writeDigits = (n) => {
+  if (n > 0) {
+    writeDigits(Math.trunc(n / 10))
+    console.log(n % 10);
+  }
 
 }
 
