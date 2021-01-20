@@ -15,5 +15,9 @@ const writeDigits = (n) => {
 }
 
 const getSum = (n) => {
+  if (n % 10 == n) {
+    return n;
+  }
 
+  return n % 10 + getSum(Math.trunc(n / 10));
 }
